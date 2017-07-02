@@ -1,0 +1,57 @@
+% \iffalse meta-comment
+%
+% This is file `testpl2e.tex', derived from `test2e.tex' in
+% LaTeX validate package.
+% Adjusted for pLaTeX/upLaTeX (community ed.) by Hironobu Yamashita
+%
+% Original copyright notice:
+%   Copyright (C) 1992-1994 by David Carlisle, Frank Mittelbach.
+%   All rights reserved.
+%   
+%   This file is part of the validate package.
+%   
+%   IMPORTANT NOTICE:
+%   
+%   You are not allowed to change this file.  In case of error
+%   write to the email address mentioned in the file readme.val.
+%
+% ChangeLog
+% Version 1.0, 2017/07/02 First draft for pLaTeX tests
+%   (based on test2e.tex 2915/09/11 v1.0g, checked out LaTeX2e svn r1510)
+%
+% \fi
+
+% \def\fileversion{v1.0}
+% \def\filedate{2017/07/02}
+
+% This file should not be used as a package or class file,
+% it should be \input.
+
+% First, input test2e.tex from LaTeX validate package
+% Hereafter, all codes are automatically inside the scope of \makeatletter.
+\input{test2e}
+
+% test2e.tex defineds \START, \END, \FORMAT, \AUTHOR, \ADDRESS,
+% \STYLE, \STYLEOPTIONS, \CLASS, \PACKAGE,
+% \OMIT, \TIMO, and \declare@command
+
+% Additional commands for pLaTeX tests:
+% In pLaTeX tests, both `.tex' and `.lvt' files are used.
+% A file `foo.tex' can be compiled into DVI without stopping
+% (exit code = 0), and the output DVI is tested using pDVItype.
+% A file `foo.lvt' is a wrapper of `foo.tex', and the log file
+% is tested.
+
+% To realize this, we disable \showbox etc. for `foo.tex' by \PLNONSTOP.
+% The file `foo.lvt' inputs `testpl2e.cfg', which includes
+% \let\PLSTART\relax
+% to override the default definitions.
+
+\def\PLSTART{\let\showbox\@gobble}
+
+\OMIT
+\InputIfFileExists{testpl2e.cfg}
+      {\typeout{^^J***^^Jtestpl2e.cfg in operation^^J***^^J}}{}
+\TIMO
+
+\endinput
